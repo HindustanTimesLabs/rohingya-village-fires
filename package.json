@@ -1,0 +1,23 @@
+{
+  "name": "raster-vector-example",
+  "version": "1.0.0",
+  "description": "Using [d3-tile](https://github.com/d3/d3-tile) to display raster image tiles underneath a [CSV dataset](https://github.com/d3/d3-dsv) of point locations (U.S. state capitals), and [d3-zoom](https://github.com/d3/d3-zoom) for pan & zoom. See also the [TopoJSON version](/mbostock/5342063) and the [static version](/mbostock/94b9fd26e12c586f342d).",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gist.github.com/9535021.git"
+  },
+  "author": "Harry Stevens <harryjosephstevens@gmail.com> (http://harryjstevens.com/)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gist.github.com/9535021"
+  },
+  "homepage": "https://gist.github.com/9535021",
+  "dependencies": {
+    "fsz": "^1.2.0",
+    "underscore": "^1.8.3"
+  }
+}
