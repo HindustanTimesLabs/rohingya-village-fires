@@ -1,11 +1,10 @@
-
 body {
   margin: 0;
   font-family: "PT Serif", serif;
 }
 
 path {
-  fill: red;
+  fill: #e74c3c;
   stroke: none;
 }
 

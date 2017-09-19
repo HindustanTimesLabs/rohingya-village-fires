@@ -1,46 +1,102 @@
-<!DOCTYPE html>
-<html>
-<meta charset="utf-8">
-<head>
-	<link rel="stylesheet" href="css/styles.css" />
-	<style>
-	#counter {
-		display: none;
-		position: fixed;
-		right: 10px;
-		top: 10px;
-		background: #fff;
-		padding: 10px;
-		font-family: monospace;
-	}
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<meta charset="utf-8">
+	<head>
 
-	#story-wrapper p:first-of-type {
-		margin-top: 100vh;
-	}
-	#story-wrapper p {
-		margin-bottom: 100vh;
-		font-size: 2em;
-	}
-</style>
-</head>
-<body>
- 	
+		<!-- Google Tag Manager -->
+    <script>dataLayer=[{"section":"interactives"}];</script>
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push(
+    {'gtm.start': new Date().getTime(),event:'gtm.js'}
+    );var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-KSLPR3B');</script>
+    <!-- End Google Tag Manager -->
 
-	<svg></svg>
-	<div id="counter"></div>
-	<div id="story-wrapper">
-		<p>Something is burning on Myanmar&rsquo;s western border.</p>
-		<p>What is it?</p>
-		<p>It's villages where Rohingya Muslims used to live.</p>
-		<p>They've been driven from their homes.</p>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/fonts/FontAwesome.otf" />
+		<link rel="stylesheet" href="css/template.css" />
+		<link rel="stylesheet" href="css/styles.css" />
+		<style>
+		#counter {
+			display: none;
+			position: fixed;
+			right: 10px;
+			top: 10px;
+			background: #fff;
+			padding: 10px;
+			font-family: monospace;
+		}
+
+		#story-wrapper p:first-of-type {
+			margin-top: 100vh;
+		}
+		#story-wrapper p {
+			margin-bottom: 100vh;
+			font-size: 2em;
+		}
+	</style>
+	</head>
+	<body>
+	 	<!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KSLPR3B"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+			<div class="container-fluid">
+
+				<div class="navbar-header">
+					<a class="navbar-brand" href="http://www.hindustantimes.com/"><img src="img/logo.png" /></a>
+				</div>
+
+				<div class="navbar-title">
+					Interactive
+				</div>
+
+				<div class="navbar-share">
+					<a class="facebook-share" onclick="window.open(this.href,'targetWindow','toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=600,height=300');return false;"><i class="fa fa-facebook" aria-hidden="true"></i></a><!-- -->
+					<a class="twitter-share" onclick="window.open(this.href,'targetWindow','toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=600,height=300');return false;"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+				</div>
+
+			</div>
+		</nav>
+		<div>
+
+			<svg></svg>
+			<div id="counter"></div>
+			<div id="story-wrapper">
+				<p>Something is burning on Myanmar&rsquo;s western border.</p>
+				<p>What is it?</p>
+				<p>It's villages where Rohingya Muslims used to live.</p>
+				<p>They've been driven from their homes.</p>
+				
+			</div>
+		</div>
+		<footer class="footer-basic-centered">
+			<p class="footer-links">
+				<a href="http://www.hindustantimes.com/">Home</a>
+				&bull;
+				<a href="http://www.hindustantimes.com/contact-us">Contact</a>
+				&bull;
+				<a href="http://www.hindustantimes.com/privacy-policy/">Privacy</a>
+				&bull;
+				<a href="http://www.hindustantimes.com/disclaimer">Disclaimer</a>
+			</p>
+
+			<p class="footer-company-name">
+				HT Media Limited &copy; 2017
+			</p>
+		</footer>
+
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+		<script src="https://d3js.org/d3.v4.min.js"></script>
+		<script src="https://d3js.org/d3-tile.v0.0.min.js"></script>
+		<script src="https://d3js.org/topojson.v1.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 		
-	</div>
-	<script src="https://d3js.org/d3.v4.min.js"></script>
-	<script src="https://d3js.org/d3-tile.v0.0.min.js"></script>
-	<script src="https://d3js.org/topojson.v1.min.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	
-	<script src="js/auto_zoom.js"></script>
-	<script src="js/preload_images.js"></script>
-</body>
+		<script src="js/auto_zoom.js"></script>
+		<script src="js/preload_images.js"></script>
+	</body>
 </html>
