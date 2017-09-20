@@ -50,6 +50,44 @@ body {
 
 
 
+
+/*TIMELINE*/
+#timeline-map {
+  margin: 0 auto;
+  margin-top: 10px;
+  display: table;
+}
+#timeline-map .subunit {
+  fill: #fff;
+  stroke: #000;
+}
+#timeline-map .subunit.rakhine-tl {
+  stroke: #ccc;
+  stroke-dasharray: 2,2;
+}
+#timeline-map .circle-village {
+  stroke: #fff;
+  stroke-width: .5px;
+}
+#timeline-map .place-label {
+  font-family: "Open Sans", sans-serif;
+  
+}
+#timeline-map .place-label.country {
+  text-transform: uppercase;
+  text-anchor: middle;
+  fill: #888;
+  font-weight: 100;
+}
+#timeline-map .place-label.state {
+  font-size: .8em;
+}
+#timeline-map .place-label.bay {
+  font-style: italic;
+  fill: #48a2d7;
+}
+
+
 /*BARCHART*/
 #bar-chart {
   margin: 0 auto;
@@ -68,7 +106,7 @@ body {
   font-size: .8em;
 }
 
-.chart-title, .chart-source {
+.chart-title, .chart-source, .chart-subtitle {
   margin: 0 auto;
   display: table;
   width: 100%;
@@ -77,6 +115,10 @@ body {
 }
 .chart-title {
   font-weight: bold;
+  font-size: 1.1em;
+}
+.chart-subtitle {
+  font-size: .9em;
 }
 .chart-source {
   margin-top: 10px;
@@ -89,6 +131,10 @@ body {
 }
 .titles-wrapper {
   /*padding-top: 300px;*/
+}
+
+.red-color {
+  color: #e74c3c;
 }
 
 /* Small Devices, Tablets */

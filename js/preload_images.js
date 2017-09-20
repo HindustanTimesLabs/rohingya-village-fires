@@ -4,17 +4,10 @@ d3.json("data/tiles.json", function(error, data){
 	data.forEach(function(img, index){
 
 		addLoadEvent(preloader("img/tiles/" + img, index));
-		// preloadImage();
-
+		
 	});
 
 });
-
-// function preloadImage(url){
-
-//   var img = new Image();
-//   img.src = url;
-// }
 
 // better image preloading @ https://perishablepress.com/press/2009/12/28/3-ways-preload-images-css-javascript-ajax/
 function preloader(url, index) {

@@ -36,29 +36,59 @@ var svg = d3.select("#map-wrapper")
 
 var raster = svg.append("g");
 
+
+
+// TIMELINE MAP INITIALIZATION
+var timeline_width = Math.min(800, window.innerWidth - 20), timeline_height = Math.min(500, window.innerHeight);
+
+var timeline_projection = d3.geoMercator();
+
+var timeline_path = d3.geoPath()
+    .projection(timeline_projection)
+    .pointRadius(2);
+
+var timeline_svg = d3.select("#timeline-map").append("svg")
+    .attr("width", timeline_width)
+    .attr("height", timeline_height);
+
+timeline_svg.append("rect")
+    .attr("width", timeline_width)
+    .attr("height", timeline_height)
+    .attr("x", 0)
+    .attr("y", 0)
+    .attr("fill", "#334d5c")
+
 d3.queue()
   .defer(d3.csv, "data/myanmar-fires.csv")
   .defer(d3.json, "data/steps.json")
   .defer(d3.json, "data/myanmar.json")
-  .await(ready)
+  .defer(d3.json, "data/rakhine.json")
+  .defer(d3.json, "data/villages.json")
+  .defer(d3.csv, "data/fires.csv")
+  .defer(d3.json, "data/zoom.json")
+  .defer(d3.json, "data/bangladesh.json")
+  .defer(d3.json, "data/labels.json")
+  .await(ready);
 
-function ready(error, fires, steps, myanmar){
+function ready(error, fires, steps, myanmar, rakhine, villages, daily_fires, zoom, bangladesh, labels){
   if (error) throw error;
 
-  drawSubUnits(myanmar, "myanmar");
-  labelMyanmar(myanmar);
+  drawSubUnits(myanmar, "myanmar", svg, path);
+  labelMyanmar(myanmar, svg, path);
 
   var fires_out = [];
 
   fires.forEach(function(d) {
     fires_out.push({
       type: "Feature",
-      properties: {date: d.acq_date},
+      properties: {date: d.acq_date, id: d.id},
       geometry: {type: "Point", coordinates: [+d.longitude, +d.latitude]}
     });
   });
 
-  drawPoints({type: "FeatureCollection", features: fires_out});
+  var fires_data = {type: "FeatureCollection", features: fires_out}
+
+  drawPoints(fires_data, svg, path);
 
   scrollyMap();
   function scrollyMap(){
@@ -70,7 +100,6 @@ function ready(error, fires, steps, myanmar){
       } else {
         transform(steps[steps.length - 1])
         $("#map-wrapper").addClass("scrolling").css("margin-top", getStoryHeight());
-        $("#main-wrapper").css("margin-top",10);
       }
       if (getScrollPct() > .91 && getScrollPct() < .98){
         $(".myanmar").fadeOut()
@@ -84,7 +113,100 @@ function ready(error, fires, steps, myanmar){
     $(window).scroll(scrollBehavior);
   }
 
+
+
+  // TIMELINE MAP
+
+  var day = 0;
+
+
+  centerZoom(zoom, timeline_svg, timeline_path, timeline_projection, timeline_width, timeline_height);
+
+  drawSubUnits(myanmar, "myanmar-tl", timeline_svg, timeline_path);
+  drawSubUnits(rakhine, "rakhine-tl", timeline_svg, timeline_path);
+  drawSubUnits(bangladesh, "bangladesh-tl", timeline_svg, timeline_path);
+
+  drawPlaces(labels, timeline_svg, timeline_projection);
+
+  drawVillages(filterVillageData(0));
+
+  var interval = setInterval(function(){
+    if (day == daily_fires.length - 1){
+      day = -1;
+    } else {
+      ++day;
+    }
+    drawVillages(filterVillageData(day));
+  }, 750);
+
+  function filterVillageData(day){
+
+    var out = {};
+
+    // deep clone villages json
+    var cloned = JSON.parse(JSON.stringify(villages));
+
+    out.type = cloned.type;
+    out.arcs = cloned.arcs;
+    out.objects = {};
+    out.objects.villages = {};
+    out.objects.villages.type = cloned.objects.villages.type;
+    // basically filtering into the geometries
+    out.objects.villages.geometries = [];
+
+    for (var i = 0; i <= day; i++){
+      var date = daily_fires[i].date;
+      $(".timeline-date").html(daily_fires[i].date_text);
+  
+      // filter cloned geometries by date
+      cloned.objects.villages.geometries.forEach(function(geom){
+        if (geom.properties.date == date) out.objects.villages.geometries.push(geom);
+      });
+    }
+
+    return out;
+
+  }
+
 };
+
+function drawPlaces(data, svg, projection){
+
+  svg.selectAll(".place-label")
+      .data(topojson.feature(data, data.objects.places).features)
+    .enter().append("text")
+      .attr("class", function(d){ return "place-label " + d.properties.type; })
+      .attr("transform", function(d) { return "translate(" + projection(d.geometry.coordinates) + ")"; })
+      .text(function(d) { return d.properties.name; });
+}
+
+function drawVillages(data){
+
+  var bg = 6, sm = 3;
+
+  var circle_village = timeline_svg.selectAll(".circle-village")
+      .data(topojson.feature(data, data.objects.villages).features, function(d){ return d.properties.id; })
+
+  circle_village.exit()
+      .attr("r", sm)
+    .transition()
+      .attr("r", 1e-10)
+      .remove();
+
+  circle_village
+    .transition()
+      .style("fill", "grey")
+      .attr("r", sm)
+
+  circle_village.enter().append("circle")
+      .attr("class", "circle-village")
+      .attr("cx", function(d){ return timeline_projection(d.geometry.coordinates)[0]; })
+      .attr("cy", function(d){ return timeline_projection(d.geometry.coordinates)[1]; })
+      .style("fill", "red")
+      .attr("r", 0)
+    .transition(1000)
+      .attr("r", bg);
+}
 
 function getStoryHeight(){
   return $(window).height() * ($("#story-wrapper").find("p").length);
@@ -157,7 +279,7 @@ function transform(transform){
   
 }
 
-function drawPoints(data){
+function drawPoints(data, svg, path){
 
   svg.append("path")
       .datum(data)
@@ -166,7 +288,7 @@ function drawPoints(data){
 
 }
 
-function drawSubUnits(data, cl){
+function drawSubUnits(data, cl, svg, path){
   svg.selectAll(".subunit." + cl)
       .data(topojson.feature(data, data.objects.polygons).features)
     .enter().append("path")
@@ -174,7 +296,7 @@ function drawSubUnits(data, cl){
       .attr("d", path);
 }
 
-function labelMyanmar(data, cl){
+function labelMyanmar(data, svg, path){
   svg.selectAll(".myanmar-label")
       .data(topojson.feature(data, data.objects.polygons).features)
     .enter().append("text")
@@ -190,6 +312,26 @@ function stringify(scale, translate) {
   return "translate(" + r(translate[0] * scale) + "," + r(translate[1] * scale) + ") scale(" + k + ")";
 }
 
+function centerZoom(data, svg, path, projection, width, height){
+  
+  var o = topojson.mesh(data, data.objects.polygons, function(a, b) { return a === b; });
+
+  projection
+      .scale(1)
+      .translate([0, 0]);
+
+  var b = path.bounds(o),
+      s = .8 / Math.max((b[1][0] - b[0][0]) / width, (b[1][1] - b[0][1]) / height),
+      t = [(width - s * (b[1][0] + b[0][0])) / 2, (height - s * (b[1][1] + b[0][1])) / 2];
+
+  projection
+      .scale(s)
+      .translate(t);
+
+  return o;
+}
+
+// THE BAR CHART
 
 function drawChart(){
   $("#bar-chart").empty();

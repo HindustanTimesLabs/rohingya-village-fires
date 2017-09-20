@@ -19,6 +19,8 @@
   "dependencies": {
     "fsz": "^1.2.0",
     "indian-ocean": "^2.0.2",
+    "jeezy": "^1.11.0",
+    "moment": "^2.18.1",
     "underscore": "^1.8.3"
   }
 }

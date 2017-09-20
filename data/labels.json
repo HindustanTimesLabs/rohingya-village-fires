@@ -1,0 +1,54 @@
+{
+  "type": "Topology",
+  "arcs": [],
+  "objects": {
+    "places": {
+      "type": "GeometryCollection",
+      "geometries": [
+        {
+          "type": "Point",
+          "coordinates": [
+            93.705156, 
+            21.196279
+          ],
+          "properties": {
+            "name": "Myanmar",
+            "type": "country"
+          }
+        },
+        {
+          "type": "Point",
+          "coordinates": [
+            92.971774,
+            20.763510
+          ],
+          "properties": {
+            "name": "Rakhine",
+            "type": "state"
+          }
+        },
+        {
+          "type": "Point",
+          "coordinates": [
+            92.220791, 21.502288
+          ],
+          "properties": {
+            "name": "Bangladesh",
+            "type": "country"
+          }
+        },
+        {
+          "type": "Point",
+          "coordinates": [
+            91.340732,
+            20.268968
+          ],
+          "properties": {
+            "name": "Bay of Bengal",
+            "type": "bay"
+          }
+        }
+      ]
+    }
+  }
+}
