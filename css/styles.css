@@ -3,20 +3,94 @@ body {
   font-family: "PT Serif", serif;
 }
 
-path {
+/*OPENING*/
+.village {
   fill: #e74c3c;
-  stroke: none;
+  /*stroke: #fff;*/
+}
+.myanmar {
+  fill: none;
+  stroke: #fff;
+}
+.myanmar-label {
+  fill: #fff;
+  font-family: "Open Sans", sans-serif;
+  text-anchor: middle;
+  font-size: .8em;
+  text-shadow: -3px -3px 1px #92ac75, -3px -2px 1px #92ac75, -3px -1px 1px #92ac75, -3px 0px 1px #92ac75, -3px 1px 1px #92ac75, -3px 2px 1px #92ac75, -3px 3px 1px #92ac75, -2px -3px 1px #92ac75, -2px -2px 1px #92ac75, -2px -1px 1px #92ac75, -2px 0px 1px #92ac75, -2px 1px 1px #92ac75, -2px 2px 1px #92ac75, -2px 3px 1px #92ac75, -1px -3px 1px #92ac75, -1px -2px 1px #92ac75, -1px -1px 1px #92ac75, -1px 0px 1px #92ac75, -1px 1px 1px #92ac75, -1px 2px 1px #92ac75, -1px 3px 1px #92ac75, 0px -3px 1px #92ac75, 0px -2px 1px #92ac75, 0px -1px 1px #92ac75, 0px 1px 1px #92ac75, 0px 2px 1px #92ac75, 0px 3px 1px #92ac75, 1px -3px 1px #92ac75, 1px -2px 1px #92ac75, 1px -1px 1px #92ac75, 1px 0px 1px #92ac75, 1px 1px 1px #92ac75, 1px 2px 1px #92ac75, 1px 3px 1px #92ac75, 2px -3px 1px #92ac75, 2px -2px 1px #92ac75, 2px -1px 1px #92ac75, 2px 0px 1px #92ac75, 2px 1px 1px #92ac75, 2px 2px 1px #92ac75, 2px 3px 1px #92ac75, 3px -3px 1px #92ac75, 3px -2px 1px #92ac75, 3px -1px 1px #92ac75, 3px 0px 1px #92ac75, 3px 1px 1px #92ac75, 3px 2px 1px #92ac75, 3px 3px 1px #92ac75;
 }
 
-svg {
+#map-wrapper {
   position: fixed;
   top: 0;
   z-index: -1;
 }
+#map-wrapper.scrolling {
+  position: absolute;
+}
 
 #story-wrapper {
-	max-width: 500px;
+	max-width: 450px;
 	color: #fff;
 	margin-left: 150px;
 	text-shadow: -3px -3px 1px #99b3cc, -3px -2px 1px #99b3cc, -3px -1px 1px #99b3cc, -3px 0px 1px #99b3cc, -3px 1px 1px #99b3cc, -3px 2px 1px #99b3cc, -3px 3px 1px #99b3cc, -2px -3px 1px #99b3cc, -2px -2px 1px #99b3cc, -2px -1px 1px #99b3cc, -2px 0px 1px #99b3cc, -2px 1px 1px #99b3cc, -2px 2px 1px #99b3cc, -2px 3px 1px #99b3cc, -1px -3px 1px #99b3cc, -1px -2px 1px #99b3cc, -1px -1px 1px #99b3cc, -1px 0px 1px #99b3cc, -1px 1px 1px #99b3cc, -1px 2px 1px #99b3cc, -1px 3px 1px #99b3cc, 0px -3px 1px #99b3cc, 0px -2px 1px #99b3cc, 0px -1px 1px #99b3cc, 0px 1px 1px #99b3cc, 0px 2px 1px #99b3cc, 0px 3px 1px #99b3cc, 1px -3px 1px #99b3cc, 1px -2px 1px #99b3cc, 1px -1px 1px #99b3cc, 1px 0px 1px #99b3cc, 1px 1px 1px #99b3cc, 1px 2px 1px #99b3cc, 1px 3px 1px #99b3cc, 2px -3px 1px #99b3cc, 2px -2px 1px #99b3cc, 2px -1px 1px #99b3cc, 2px 0px 1px #99b3cc, 2px 1px 1px #99b3cc, 2px 2px 1px #99b3cc, 2px 3px 1px #99b3cc, 3px -3px 1px #99b3cc, 3px -2px 1px #99b3cc, 3px -1px 1px #99b3cc, 3px 0px 1px #99b3cc, 3px 1px 1px #99b3cc, 3px 2px 1px #99b3cc, 3px 3px 1px #99b3cc;
+}
+#story-wrapper p:first-of-type {
+  margin-top: 30vh;
+}
+#story-wrapper p:last-of-type {
+  margin-bottom: 70vh;
+}
+#story-wrapper p {
+  margin-bottom: 100vh;
+  font-size: 2em;
+}
+
+
+/*BARCHART*/
+#bar-chart {
+  margin: 0 auto;
+  display: table;
+}
+#bar-chart .axis {
+  font-family: "Open Sans", sans-serif;
+}
+#bar-chart .bar {
+  fill: #e74c3c;
+}
+#bar-chart .amount {
+  font-family: "Open Sans", sans-serif;
+  fill: #fff;
+  text-anchor: middle;
+  font-size: .8em;
+}
+
+.chart-title, .chart-source {
+  margin: 0 auto;
+  display: table;
+  width: 100%;
+  max-width: 800px;
+  font-family: "Open Sans", sans-serif;
+}
+.chart-title {
+  font-weight: bold;
+}
+.chart-source {
+  margin-top: 10px;
+  font-size: .8em;
+  color: #888;
+}
+
+.titles-wrapper {
+  padding-top: 40px;
+}
+
+/* Small Devices, Tablets */
+@media only screen and (max-width: 768px) {
+  #bar-chart, .chart-title, .chart-source {
+    padding: 0px 10px;
+  }
+  #bar-chart .amount {
+    font-size: .7em;
+  }
 }

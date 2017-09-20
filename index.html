@@ -30,13 +30,7 @@
 			font-family: monospace;
 		}
 
-		#story-wrapper p:first-of-type {
-			margin-top: 100vh;
-		}
-		#story-wrapper p {
-			margin-bottom: 100vh;
-			font-size: 2em;
-		}
+
 	</style>
 	</head>
 	<body>
@@ -64,15 +58,29 @@
 		</nav>
 		<div>
 
-			<svg></svg>
+			<svg id="map-wrapper"></svg>
 			<div id="counter"></div>
 			<div id="story-wrapper">
 				<p>Something is burning on Myanmar&rsquo;s western border.</p>
 				<p>What is it?</p>
 				<p>It's villages where Rohingya Muslims used to live.</p>
-				<p>They've been driven from their homes.</p>
-				
+				<p>Using nighttime satellite imagery, rights groups identified 80 of their villages set ablaze between August 25 and September 11.</p>
 			</div>
+			<div class="titles-wrapper">
+	      <h1 class="headline">Mapping burning Rohingya villages</h1>
+	      <h2 class="byline">By Harry Stevens | DD September, 2017</h2>
+	    </div>
+	    <div class="copy">
+	    	<p>Rights groups have identified XXXX villages near Myanmar&rsquo;s border that have been burnt since August 25, the day the Myanmar army launched a military campaign against the Rohingya people of the country&rsquo;s western Rakhine state after a group of Rohingya militants attacked police posts.</p>
+	    	<p>The humanitarian orgnaisations Amnesty International and Human Rights Watch used satellite imagery to identify the burning villages, which corroborate photographs, videos, and interviews with several eyewitnesses both in Myanmar and across the border in Bangladesh.</p>
+				<p>&ldquo;The evidence is irrefutable &mdash; the Myanmar security forces are setting northern Rakhine State ablaze in a targeted campaign to push the Rohingya people out of Myanmar,&rdquo; Tirana Hassan, Amnesty International&rsquo;s crisis response director, said in <a href="https://www.amnesty.org/en/latest/news/2017/09/myanmar-scorched-earth-campaign-fuels-ethnic-cleansing-of-rohingya-from-rakhine-state/">the organisation&rsquo;s report</a>. &ldquo;Make no mistake: this is ethnic cleansing.&rdquo;</p>
+	    </div>
+	    <div class="chart-title">Number of Rohingya villages seen burning at night, Aug. 25 - Sep. 11</div>
+	    <div id="bar-chart"></div>
+	    <div class="chart-source">Source: Amnesty International</div>
+	    <div class="copy">
+	    	<p>The most intense period of village burning took place on three days between August 28 and August 30. On the 28th alone, satellite images captured 32 Rohingya villages burning in the night.
+	    </div>
 		</div>
 		<footer class="footer-basic-centered">
 			<p class="footer-links">
@@ -90,13 +98,17 @@
 			</p>
 		</footer>
 
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+		
 		<script src="https://d3js.org/d3.v4.min.js"></script>
 		<script src="https://d3js.org/d3-tile.v0.0.min.js"></script>
 		<script src="https://d3js.org/topojson.v1.min.js"></script>
+		<script src="https://unpkg.com/jeezy/lib/jeezy.min.js"></script>
+		<script src="https://unpkg.com/d3-marcon/build/d3-marcon.min.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script src="http://www.hindustantimes.com/static/common/js/jquery.smartresize.js"></script>
+
 		<script src="js/template.js"></script>
-		<script src="js/auto_zoom.js"></script>
+		<script src="js/scripts.js"></script>
 		<script src="js/preload_images.js"></script>
 
 
