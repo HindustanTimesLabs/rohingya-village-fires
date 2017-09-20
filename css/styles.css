@@ -86,7 +86,18 @@ body {
   font-style: italic;
   fill: #48a2d7;
 }
-
+#timeline-map .timeline-legend {
+  position: absolute;
+  color: #fff;
+  font-family: "Open Sans", sans-serif;
+  margin-top: 200px;
+  margin-left: 100px;
+  text-align: center;
+  width: 180px;
+}
+#timeline-map .timeline-villages {
+  font-size: .9em;
+}
 
 /*BARCHART*/
 #bar-chart {
@@ -151,11 +162,26 @@ body {
   #bar-chart .amount {
     font-size: .7em;
   }
+
+  #timeline-map .timeline-legend {
+    margin-top: 275px;
+  }
+}
+
+@media only screen and (max-width: 650px) {
+  #timeline-map .timeline-legend {
+    margin-top: 380px;
+    margin-left: 60px
+  }
 }
 
 /* Extra Small Devices, Phones */
 @media only screen and (max-width: 480px) {
   #story-wrapper {
     padding: 0px 10px;
+  }
+  #timeline-map .timeline-legend {
+    margin-top: 380px;
+    margin-left: 20px
   }
 }

@@ -130,7 +130,7 @@ function ready(error, fires, steps, myanmar, rakhine, villages, daily_fires, zoo
 
   drawVillages(filterVillageData(0));
 
-  var interval = setInterval(function(){
+  var interval = d3.interval(function(){
     if (day == daily_fires.length - 1){
       day = -1;
     } else {
@@ -157,6 +157,7 @@ function ready(error, fires, steps, myanmar, rakhine, villages, daily_fires, zoo
     for (var i = 0; i <= day; i++){
       var date = daily_fires[i].date;
       $(".timeline-date").html(daily_fires[i].date_text);
+      $(".timeline-villages").html("<span class='red-color'>" + daily_fires[i].fires + "</span> villages seen burning");
   
       // filter cloned geometries by date
       cloned.objects.villages.geometries.forEach(function(geom){
