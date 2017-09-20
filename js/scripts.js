@@ -36,8 +36,6 @@ var svg = d3.select("#map-wrapper")
 
 var raster = svg.append("g");
 
-// var vector = svg.append("path").attr("class", "village");
-
 d3.queue()
   .defer(d3.csv, "data/myanmar-fires.csv")
   .defer(d3.json, "data/steps.json")
@@ -71,7 +69,8 @@ function ready(error, fires, steps, myanmar){
         $("#map-wrapper").removeClass("scrolling").css("margin-top", 0);
       } else {
         transform(steps[steps.length - 1])
-        $("#map-wrapper").addClass("scrolling").css("margin-top", $("#story-wrapper").height());
+        $("#map-wrapper").addClass("scrolling").css("margin-top", getStoryHeight());
+        $("#main-wrapper").css("margin-top",10);
       }
       if (getScrollPct() > .91 && getScrollPct() < .98){
         $(".myanmar").fadeOut()
@@ -87,33 +86,48 @@ function ready(error, fires, steps, myanmar){
 
 };
 
+function getStoryHeight(){
+  return $(window).height() * ($("#story-wrapper").find("p").length);
+}
+
 function getTransform(scroll_pct, steps){
 
   var steps_length = steps.length;
   var curr_step = Math.round(steps_length * scroll_pct);
-  // $("#counter").html("window height: " + window_height + "<br /> story height: " + story_height + "<br />scroll height: " + scroll_height + "<br/>scroll pct: " + (scroll_pct * 100).toFixed(2) + "<br />total steps: " + steps_length + "<br />current step: " + curr_step);
+  
+
+  var window_height = $(window).height();
+  var story_height = getStoryHeight();
+  var scroll_height = $(window).scrollTop();
+  $("#counter").html("window height: " + window_height + "<br /> story height: " + story_height + "<br />scroll height: " + scroll_height + "<br/>scroll pct: " + (scroll_pct * 100).toFixed(2) + "<br />total steps: " + steps_length + "<br />current step: " + curr_step);
+  
   return steps[curr_step];
 }
 
 function getScrollPct(){
   var window_height = $(window).height();
-  var story_height = $("#story-wrapper").height();
+  var story_height = getStoryHeight();
   var scroll_height = $(window).scrollTop();
   return scroll_height / story_height;
 }
 
 function transform(transform){
 
+  var ww = $(window).width();
+  var tx_var = ww <= 768 && ww > 480 ? "x_md" : 
+    ww <= 480 ? "x_sm" : 
+    "x";
+
   var tiles = tile
       .scale(transform.k)
-      .translate([transform.x, transform.y])
+      .translate([transform[tx_var], transform.y])
       ();
 
   var last_projection = projection;
 
   projection
       .scale(transform.k / tau)
-      .translate([transform.x, transform.y]);
+      .translate([transform[tx_var], transform.y]);
 
   d3.selectAll(".village")
       .attr("d", path);

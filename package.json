@@ -18,6 +18,7 @@
   "homepage": "https://github.com/HindustanTimesLabs/rohingya-village-fires",
   "dependencies": {
     "fsz": "^1.2.0",
+    "indian-ocean": "^2.0.2",
     "underscore": "^1.8.3"
   }
 }

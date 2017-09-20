@@ -35,16 +35,19 @@ body {
 	margin-left: 150px;
 	text-shadow: -3px -3px 1px #99b3cc, -3px -2px 1px #99b3cc, -3px -1px 1px #99b3cc, -3px 0px 1px #99b3cc, -3px 1px 1px #99b3cc, -3px 2px 1px #99b3cc, -3px 3px 1px #99b3cc, -2px -3px 1px #99b3cc, -2px -2px 1px #99b3cc, -2px -1px 1px #99b3cc, -2px 0px 1px #99b3cc, -2px 1px 1px #99b3cc, -2px 2px 1px #99b3cc, -2px 3px 1px #99b3cc, -1px -3px 1px #99b3cc, -1px -2px 1px #99b3cc, -1px -1px 1px #99b3cc, -1px 0px 1px #99b3cc, -1px 1px 1px #99b3cc, -1px 2px 1px #99b3cc, -1px 3px 1px #99b3cc, 0px -3px 1px #99b3cc, 0px -2px 1px #99b3cc, 0px -1px 1px #99b3cc, 0px 1px 1px #99b3cc, 0px 2px 1px #99b3cc, 0px 3px 1px #99b3cc, 1px -3px 1px #99b3cc, 1px -2px 1px #99b3cc, 1px -1px 1px #99b3cc, 1px 0px 1px #99b3cc, 1px 1px 1px #99b3cc, 1px 2px 1px #99b3cc, 1px 3px 1px #99b3cc, 2px -3px 1px #99b3cc, 2px -2px 1px #99b3cc, 2px -1px 1px #99b3cc, 2px 0px 1px #99b3cc, 2px 1px 1px #99b3cc, 2px 2px 1px #99b3cc, 2px 3px 1px #99b3cc, 3px -3px 1px #99b3cc, 3px -2px 1px #99b3cc, 3px -1px 1px #99b3cc, 3px 0px 1px #99b3cc, 3px 1px 1px #99b3cc, 3px 2px 1px #99b3cc, 3px 3px 1px #99b3cc;
 }
+
+#story-wrapper p {
+  height: 100vh;
+  font-size: 2em;
+}
+
 #story-wrapper p:first-of-type {
   margin-top: 30vh;
 }
 #story-wrapper p:last-of-type {
   margin-bottom: 70vh;
 }
-#story-wrapper p {
-  margin-bottom: 100vh;
-  font-size: 2em;
-}
+
 
 
 /*BARCHART*/
@@ -81,16 +84,32 @@ body {
   color: #888;
 }
 
+#main-wrapper {
+  position: absolute;
+}
 .titles-wrapper {
-  padding-top: 40px;
+  /*padding-top: 300px;*/
 }
 
 /* Small Devices, Tablets */
 @media only screen and (max-width: 768px) {
+  #story-wrapper {
+    margin: 0 auto;
+    display: table;
+  }
+
+
   #bar-chart, .chart-title, .chart-source {
     padding: 0px 10px;
   }
   #bar-chart .amount {
     font-size: .7em;
+  }
+}
+
+/* Extra Small Devices, Phones */
+@media only screen and (max-width: 480px) {
+  #story-wrapper {
+    padding: 0px 10px;
   }
 }
