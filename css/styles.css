@@ -145,7 +145,7 @@ body {
   }
 
 
-  #bar-chart, .chart-title, .chart-source {
+  #bar-chart, .chart-title, .chart-source, .chart-subtitle {
     padding: 0px 10px;
   }
   #bar-chart .amount {
