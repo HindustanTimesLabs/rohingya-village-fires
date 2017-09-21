@@ -3,7 +3,7 @@ d3.json("data/first_tiles.json", function(error, data){
 
 	data.forEach(function(img, index){
 
-		preloader("img/tiles/" + img, index);
+		addLoadEvent(preloader("img/tiles/" + img, index));
 		
 	});
 
@@ -14,7 +14,7 @@ d3.json("data/tiles.json", function(error, data){
 
 	data.forEach(function(img, index){
 
-		preloader("img/tiles/" + img, index);
+		addLoadEvent(preloader("img/tiles/" + img, index));
 		
 	});
 
