@@ -1,6 +1,6 @@
 // meta tags
-var twitterStatus = '';
-var hashtags = '';
+var twitterStatus = 'Dozens of Rohingya villages burning in the night, spotted by satellites';
+var hashtags = 'htdata,rohingya';
 
 $(document).ready(function(){
   // calc breakpoint

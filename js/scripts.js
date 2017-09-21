@@ -5,7 +5,7 @@ if(/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine
 
 var resp = {};
 if (isMobile){
-  resp.map_width = Math.max(768, window.innerWidth);
+  resp.map_width = Math.max(window.innerWidth);
 } else {
   resp.map_width = Math.max(1440, window.innerWidth);
 }
@@ -39,7 +39,7 @@ var raster = svg.append("g");
 
 
 // TIMELINE MAP INITIALIZATION
-var timeline_width = Math.min(800, window.innerWidth - 20), timeline_height = Math.min(500, window.innerHeight);
+var timeline_width = Math.min(800, window.innerWidth), timeline_height = Math.min(500, window.innerHeight);
 
 var timeline_projection = d3.geoMercator();
 
@@ -217,13 +217,7 @@ function getTransform(scroll_pct, steps){
 
   var steps_length = steps.length;
   var curr_step = Math.round(steps_length * scroll_pct);
-  
-
-  var window_height = $(window).height();
-  var story_height = getStoryHeight();
-  var scroll_height = $(window).scrollTop();
-  $("#counter").html("window height: " + window_height + "<br /> story height: " + story_height + "<br />scroll height: " + scroll_height + "<br/>scroll pct: " + (scroll_pct * 100).toFixed(2) + "<br />total steps: " + steps_length + "<br />current step: " + curr_step);
-  
+    
   return steps[curr_step];
 }
 
@@ -343,7 +337,7 @@ function drawChart(){
       .top(20)
       .bottom(20)
       .width(Math.min(800, window.innerWidth - 20))
-      .height(Math.min(400, window.innerHeight))
+      .height(Math.min(400, window.innerHeight - 40))
       .element("#bar-chart")
 
   setup.render();
@@ -373,10 +367,15 @@ function drawChart(){
     y.domain([0, d3.max(fires, function(d){ return d[y_var]; })])
 
     var x_axis = d3.axisBottom()
-        .ticks(5)
         .tickFormat(function(d, i){
           d = d.replace(", 2017", "");
           if (i == 0 || d == "Sep. 1") {
+
+            if (isMobile){
+
+              if (i == 0) d = "25/8"
+              if (d == "Sep. 1") d = "1/9"
+            }
 
           } else {
             d = d.split(". ")[1]

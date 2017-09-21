@@ -27,6 +27,8 @@ body {
 }
 #map-wrapper.scrolling {
   position: absolute;
+  width: 100%;
+  overflow-x: hidden;
 }
 
 #story-wrapper {
@@ -148,16 +150,32 @@ body {
   color: #e74c3c;
 }
 
+.image-md {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  display: table;
+}
+.image-md img {
+  width: 100%;
+}
+
 /* Small Devices, Tablets */
 @media only screen and (max-width: 768px) {
+  html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
   #story-wrapper {
     margin: 0 auto;
     display: table;
+    text-align: center;
   }
 
 
-  #bar-chart, .chart-title, .chart-source, .chart-subtitle {
-    padding: 0px 10px;
+  .titles-wrapper, #story-wrapper, #bar-chart, .chart-title, .chart-source, .chart-subtitle {
+    padding: 0px 15px;
   }
   #bar-chart .amount {
     font-size: .7em;
@@ -166,6 +184,7 @@ body {
   #timeline-map .timeline-legend {
     margin-top: 275px;
   }
+
 }
 
 @media only screen and (max-width: 650px) {
@@ -177,9 +196,9 @@ body {
 
 /* Extra Small Devices, Phones */
 @media only screen and (max-width: 480px) {
-  #story-wrapper {
-    padding: 0px 10px;
-  }
+  /*#story-wrapper p:last-of-type {
+    margin-bottom: 32vh;
+  }*/
   #timeline-map .timeline-legend {
     margin-top: 380px;
     margin-left: 20px
