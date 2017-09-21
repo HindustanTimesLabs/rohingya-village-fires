@@ -68,29 +68,29 @@ _.rateLimit = function(func, rate, async) {
 
 
 
-var new_files = ["http://tile.stamen.com/terrain-background/5/29/12.png", "http://tile.stamen.com/terrain-background/5/29/13.png", "http://tile.stamen.com/terrain-background/5/29/14.png", "http://tile.stamen.com/terrain-background/5/29/15.png", "http://tile.stamen.com/terrain-background/5/29/16.png", "http://tile.stamen.com/terrain-background/6/53/26.png", "http://tile.stamen.com/terrain-background/6/53/27.png", "http://tile.stamen.com/terrain-background/6/53/28.png", "http://tile.stamen.com/terrain-background/6/53/29.png", "http://tile.stamen.com/terrain-background/6/53/30.png", "http://tile.stamen.com/terrain-background/7/101/54.png", "http://tile.stamen.com/terrain-background/7/101/55.png", "http://tile.stamen.com/terrain-background/7/101/56.png", "http://tile.stamen.com/terrain-background/7/101/57.png", "http://tile.stamen.com/terrain-background/7/101/58.png", "http://tile.stamen.com/terrain-background/7/101/59.png", "http://tile.stamen.com/terrain-background/7/92/59.png", "http://tile.stamen.com/terrain-background/7/93/59.png", "http://tile.stamen.com/terrain-background/7/94/59.png", "http://tile.stamen.com/terrain-background/7/95/59.png", "http://tile.stamen.com/terrain-background/7/96/59.png", "http://tile.stamen.com/terrain-background/7/97/59.png", "http://tile.stamen.com/terrain-background/7/98/59.png", "http://tile.stamen.com/terrain-background/7/99/59.png", "http://tile.stamen.com/terrain-background/7/100/59.png", "http://tile.stamen.com/terrain-background/8/198/111.png", "http://tile.stamen.com/terrain-background/8/198/112.png", "http://tile.stamen.com/terrain-background/8/198/113.png", "http://tile.stamen.com/terrain-background/8/198/114.png", "http://tile.stamen.com/terrain-background/8/198/115.png", "http://tile.stamen.com/terrain-background/9/392/223.png", "http://tile.stamen.com/terrain-background/9/392/224.png", "http://tile.stamen.com/terrain-background/9/392/225.png", "http://tile.stamen.com/terrain-background/9/392/226.png", "http://tile.stamen.com/terrain-background/9/392/227.png", "http://tile.stamen.com/terrain-background/9/392/228.png", "http://tile.stamen.com/terrain-background/9/383/228.png", "http://tile.stamen.com/terrain-background/9/384/228.png", "http://tile.stamen.com/terrain-background/9/385/228.png", "http://tile.stamen.com/terrain-background/9/386/228.png", "http://tile.stamen.com/terrain-background/9/387/228.png", "http://tile.stamen.com/terrain-background/9/388/228.png", "http://tile.stamen.com/terrain-background/9/389/228.png", "http://tile.stamen.com/terrain-background/9/390/228.png", "http://tile.stamen.com/terrain-background/9/391/228.png"]
+var new_files = ["http://tile.stamen.com/terrain-background/4/10/9.png", "http://tile.stamen.com/terrain-background/4/11/9.png", "http://tile.stamen.com/terrain-background/4/12/9.png", "http://tile.stamen.com/terrain-background/4/13/9.png", "http://tile.stamen.com/terrain-background/4/14/9.png"]
 
-var json = [];
+// var json = [];
 
-new_files.forEach((file, index) => {
-  var s = file.split("terrain-background/")[1].split(".png")[0].split("/");
-  var out = s[0] + "-" + s[1] + "-" + s[2] + ".png";
-  json.push(out);
-  if (index + 1 == new_files.length) fsz.writeJSON("data/new_tiles.json", json);
-});
+// new_files.forEach((file, index) => {
+//   var s = file.split("terrain-background/")[1].split(".png")[0].split("/");
+//   var out = s[0] + "-" + s[1] + "-" + s[2] + ".png";
+//   json.push(out);
+//   if (index + 1 == new_files.length) fsz.writeJSON("data/new_tiles.json", json);
+// });
 
-// var dl_limited = _.rateLimit(dl, 100)
+var dl_limited = _.rateLimit(dl, 100)
 
-// new_files.forEach(dl_limited);
+new_files.forEach(dl_limited);
 
-// function dl(file, file_index){
+function dl(file, file_index){
 
-// 	console.log(file);
+	console.log(file);
 
-// 	var s = file.split("terrain-background/")[1].split(".png")[0].split("/");
-// 	var out = s[0] + "-" + s[1] + "-" + s[2] + ".png";
+	var s = file.split("terrain-background/")[1].split(".png")[0].split("/");
+	var out = s[0] + "-" + s[1] + "-" + s[2] + ".png";
 	
-// 	console.log(((file_index + 1) / new_files.length * 100).toFixed(2))
+	console.log(((file_index + 1) / new_files.length * 100).toFixed(2))
 
-// 	fsz.download(file, "img/tiles/" + out);
-// }
+	fsz.download(file, "img/tiles/" + out);
+}
